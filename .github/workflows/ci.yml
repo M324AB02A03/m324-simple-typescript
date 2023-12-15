@@ -1,5 +1,5 @@
 name: Lint Test Build
-run-name: ${{ github.actor }} is running continuous🚀
+run-name: ${{ github.actor }} is running continuous integration🚀
 on: [push]
 jobs:
   Explore-GitHub-Actions:
