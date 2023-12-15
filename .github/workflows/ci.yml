@@ -5,6 +5,6 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-runners
     steps:
-      - run: yarn lint
-      - run: yarn test
-      - run: yarn build
+      - run: npm run lint
+      - run: npm test
+      - run: npm build
