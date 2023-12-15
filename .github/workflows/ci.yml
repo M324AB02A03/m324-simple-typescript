@@ -1,0 +1,10 @@
+name: Lint Test Build
+run-name: ${{ github.actor }} is running continuous🚀
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-runners
+    steps:
+      - run: yarn lint
+      - run: yarn test
+      - run: yarn build
