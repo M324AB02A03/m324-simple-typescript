@@ -5,6 +5,7 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-runners
     steps:
+      - run: pwd
       - run: ls
       - run: npm i
       - run: npm run lint
