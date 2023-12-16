@@ -2,13 +2,12 @@ name: Lint Test Build
 run-name: ${{ github.actor }} is running continuous integration🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Basic-Integration:
     runs-on: ubuntu-runners
     steps:
       - uses: actions/checkout@v4
-      - run: pwd
       - run: ls
-      - run: npm i
-      - run: npm run lint
-      - run: npm test
-      - run: npm build
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn test
+      - run: yarn build
