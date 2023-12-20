@@ -8,9 +8,9 @@ on:
       - closed
 
 env:
-  DOCKERHUB_USERNAME: switzerchees
-  KUBERNETES_NAMESPACE: my-garden
-  APP_NAME: my-garden
+  DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USER_KEITH }}
+  KUBERNETES_NAMESPACE: m324-3
+  APP_NAME: m324-3-app
   BASE_URL: m324ab05kyh.hackerman.ch
   IMAGE_TAG: latest
 
@@ -60,6 +60,7 @@ jobs:
         uses: swdotcom/update-and-apply-kubernetes-configs@v1
         with:
           k8-config-file-paths: |
+            .k8s/m324-3-admin-m324-3-kubeconfig.yml
             .k8s/namespace.yml
             .k8s/deployment.yml
             .k8s/service.yml
