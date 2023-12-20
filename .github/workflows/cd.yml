@@ -7,17 +7,24 @@ on:
     types:
       - closed
 
+env:
+  DOCKERHUB_USERNAME: switzerchees
+  KUBERNETES_NAMESPACE: my-garden
+  APP_NAME: my-garden
+  BASE_URL: m324ab05kyh.hackerman.ch
+  IMAGE_TAG: latest
+
 jobs:
   deploy:
     runs-on: keith
     steps:
-      - name: Get current date
-        id: date
-        uses: Kaven-Universe/github-action-current-date-time@v1
-        with:
-          format: 'YYYY_MM_DD_HH_mm_ss'
+      # - name: Get current date
+      #   id: date
+      #   uses: Kaven-Universe/github-action-current-date-time@v1
+      #   with:
+      #     format: 'YYYY_MM_DD_HH_mm_ss'
 
-      - run: echo "${{ steps.date.outputs.time }}"
+      # - run: echo "${{ steps.date.outputs.time }}"
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,4 +43,25 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USER_KEITH }}/simple_ts:${{ steps.date.outputs.time }}
+          tags: ${{ secrets.DOCKERHUB_USER_KEITH }}/simple_ts:latest
+
+      - name: Check and Install kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'latest'
+        id: install
+
+      - name: Set Kubernetes Context
+        uses: azure/k8s-set-context@v3
+        with:
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
+      - name: Replace and Apply Kubernetes Manifests
+        uses: swdotcom/update-and-apply-kubernetes-configs@v1
+        with:
+          k8-config-file-paths: |
+            .k8s/namespace.yml
+            .k8s/deployment.yml
+            .k8s/service.yml
+            .k8s/ingress.yml
+          replacement-method: defined
