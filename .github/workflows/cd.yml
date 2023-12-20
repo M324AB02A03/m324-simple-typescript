@@ -1,12 +1,14 @@
-name: ci
+name: cd
 
 on:
-  pull_request:
+  pull_request_review:
     branches:
       - master
+    types:
+      - submitted
 
 jobs:
-  integrate:
+  deploy:
     runs-on: keith
     permissions: write-all
     steps:
