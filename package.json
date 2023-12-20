@@ -10,11 +10,6 @@
     "lint": "eslint --ext .ts src",
     "test": "jest"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run test && npm run prettier-format && npm run lint"
-    }
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
