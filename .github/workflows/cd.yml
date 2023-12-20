@@ -8,7 +8,7 @@ on:
       - submitted
 
 jobs:
-  docker:
+  deploy:
     runs-on: keith
     permissions: write-all
     steps:

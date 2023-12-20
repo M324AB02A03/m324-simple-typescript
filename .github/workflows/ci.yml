@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  docker:
+  integrate:
     runs-on: keith
     permissions: write-all
     steps:
