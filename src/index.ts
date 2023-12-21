@@ -12,6 +12,12 @@ app.get('/', (req: Request, res: Response) => {
   res.send(`<h1>Hello World!</h1><p>Host: ${os.hostname()}</p>`);
 });
 
+app.get('/log/time', (req, res) => {
+  // eslint-disable-next-line no-console
+  console.log(Date());
+  res.send('Date logged!');
+});
+
 const serverPort = process.env.PORT || 3000;
 server.listen(serverPort, () => {
   // eslint-disable-next-line no-console
