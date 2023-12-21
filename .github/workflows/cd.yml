@@ -11,7 +11,7 @@ env:
   DOCKERHUB_USERNAME: keith50112e5
   KUBERNETES_NAMESPACE: m324-3
   APP_NAME: m324-3-app
-  BASE_URL: m324ab05kyh.hackerman.ch
+  BASE_URL: m324ab05kyh.m324.hackerman.ch
   IMAGE_TAG: keith50112e5/simple_ts:latest
 
 jobs:
